@@ -1,0 +1,25 @@
+.template-exampleUI{
+    background-color: orangered;
+    min-width: 30rem;
+    max-width: 60rem;
+    margin-top: 10rem;
+
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.template-exampleUI_wrapper-textArea1{
+padding: 1rem;
+width: 20rem;
+height: 20rem;
+}
+
+
+.template-exampleUI_wrapper-submitButton1{
+    padding: 0.5rem;
+}
+
+.template-exampleUI_wrapper-displayBlock1{
+    padding:1rem;
+}
