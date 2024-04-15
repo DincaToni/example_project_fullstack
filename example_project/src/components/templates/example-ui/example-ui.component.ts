@@ -17,5 +17,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './example-ui.component.css',
 })
 export class ExampleUIComponent {
-  resultsArr = ['', ''];
+  resultsArr: String[] = [];
+  textAreaValue: String = '';
 }
