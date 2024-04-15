@@ -10,6 +10,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class SubmitButton1Component {
   @Input() taValue!: String;
 
+  @Input() checkedVal!: String;
+
   @Input() results!: String[];
   @Output() resultsChange = new EventEmitter<String[]>();
 
@@ -73,7 +75,7 @@ export class SubmitButton1Component {
     }
   }
   onSubmit = () => {
-    this.results.push(this.analyzeText(['vowels', this.taValue]));
+    this.results.push(this.analyzeText([this.checkedVal, this.taValue]));
     this.resultsChange.emit(this.results);
     console.log(this.results);
   };
