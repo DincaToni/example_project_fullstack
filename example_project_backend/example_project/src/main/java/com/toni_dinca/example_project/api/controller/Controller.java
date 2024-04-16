@@ -38,7 +38,7 @@ public class Controller {
     private static String showCharacterCounts(HashMap<Character, Integer> map, String label) {
         String result = "";
         for (char ch : map.keySet()) {
-            result = result + (label + " '" + ch + "' appears " + map.get(ch) + " times");
+            result = result + (label + " '" + ch + "' appears " + map.get(ch) + " times\n");
         }
         return result;
     }
