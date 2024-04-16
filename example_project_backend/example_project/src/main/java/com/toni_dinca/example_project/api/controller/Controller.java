@@ -1,15 +1,15 @@
 package com.toni_dinca.example_project.api.controller;
 
 import com.toni_dinca.example_project.api.model.TextBundle;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class Controller {
     @PostMapping("/AnalyzeText")
+    @ResponseBody
     String analyze(@RequestBody TextBundle ob)
     {
         String input = ob.getText().toLowerCase();
@@ -25,11 +25,13 @@ public class Controller {
                 }
             }
         }
-
+        String response = "{\"data\": \"";
         if (ob.getAnalysisType().equals("vowels")) {
-           return showCharacterCounts(vowels, "Vowel");
+            response = response + showCharacterCounts(vowels, "Vowel") + "\"}";
+            return response;
         } else if (ob.getAnalysisType().equals("consonants")) {
-            return showCharacterCounts(consonants, "Consonant");
+            response = response + showCharacterCounts(consonants, "Consonant") + "\"}";
+            return response;
         } else {
             return "Invalid mode. Use 'vowels' or 'consonants'.";
         }
@@ -38,7 +40,7 @@ public class Controller {
     private static String showCharacterCounts(HashMap<Character, Integer> map, String label) {
         String result = "";
         for (char ch : map.keySet()) {
-            result = result + (label + " '" + ch + "' appears " + map.get(ch) + " times\n");
+            result = result + (label + " '" + ch + "' appears " + map.get(ch) + " times\\n");
         }
         return result;
     }

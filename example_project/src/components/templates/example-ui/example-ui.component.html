@@ -4,7 +4,10 @@
     </div>
     <div class="template-exampleUI_wrapper-submitButton1">
         <radio-group [(checkedVal)]="analysisType"/>
-        <submit-button1 [taValue] = "textAreaValue" [checkedVal]="analysisType" [(results)] = "resultsArr"/>
+        <div>
+            <toggle-switch [(isSwitchOn)]="isSwitchOn"/>
+        </div>
+        <submit-button1 [taValue] = "textAreaValue" [checkedVal]="analysisType" [isSwitchOn]="isSwitchOn" [(results)] = "resultsArr"/>
     </div>
     <div class="template-exampleUI_wrapper-displayBlock1" >
         <display-block1 *ngFor="let result of resultsArr" [res]="result"></display-block1>

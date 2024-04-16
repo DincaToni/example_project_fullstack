@@ -4,6 +4,7 @@ import { SubmitButton1Component } from '../../atoms/submit-button1/submit-button
 import { DisplayBlock1Component } from '../../atoms/display-block1/display-block1.component';
 import { RadioGroupComponent } from '../../atoms/radio-group/radio-group.component';
 import { CommonModule } from '@angular/common';
+import { ToggleSwitchComponent } from '../../atoms/toggle-switch/toggle-switch.component';
 
 @Component({
   selector: 'example-ui',
@@ -13,6 +14,7 @@ import { CommonModule } from '@angular/common';
     SubmitButton1Component,
     DisplayBlock1Component,
     RadioGroupComponent,
+    ToggleSwitchComponent,
     CommonModule,
   ],
   templateUrl: './example-ui.component.html',
@@ -22,4 +24,5 @@ export class ExampleUIComponent {
   resultsArr: String[] = [];
   textAreaValue: String = '';
   analysisType: String = '';
+  isSwitchOn: boolean = false;
 }
