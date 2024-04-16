@@ -1,0 +1,18 @@
+button{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    border-radius: 15px;
+    background-color: #ccc;
+    border: none;
+    width: 90px;
+    height: 30px;
+
+    margin-top: 0.5rem;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #2196f3;
+}

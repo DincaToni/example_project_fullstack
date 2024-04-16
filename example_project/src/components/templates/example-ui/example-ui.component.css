@@ -1,5 +1,4 @@
 .template-exampleUI{
-    background-color: orangered;
     min-width: 30rem;
     max-width: 60rem;
     margin-top: 10rem;
@@ -7,6 +6,17 @@
     display: flex;
     justify-content: space-between;
     
+}
+
+.template-exampleUI_formWrapper{
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    box-shadow: 2.5px 2.5px 50px rgb(0, 0, 0, 0.35);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
 }
 
 .template-exampleUI_wrapper-textArea1{
@@ -18,6 +28,10 @@ height: 20rem;
 
 .template-exampleUI_wrapper-submitButton1{
     padding: 0.5rem;
+
+}
+.template-exampleUI_radioGroup{
+    margin: 0.5rem;
 }
 
 .template-exampleUI_wrapper-displayBlock1{
