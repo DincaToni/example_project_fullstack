@@ -1,9 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
 
 @Component({
   selector: 'submit-button1',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule],
   templateUrl: './submit-button1.component.html',
   styleUrl: './submit-button1.component.css',
 })
@@ -11,6 +14,8 @@ export class SubmitButton1Component {
   @Input() taValue!: String;
 
   @Input() checkedVal!: String;
+
+  @Input() isSwitchOn!: boolean;
 
   @Input() results!: String[];
   @Output() resultsChange = new EventEmitter<String[]>();
@@ -74,8 +79,43 @@ export class SubmitButton1Component {
       return '';
     }
   }
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+
+  constructor(private http: HttpClient) {}
+
+  postData() {
+    let requestBody = {
+      text: this.taValue,
+      analysisType: this.checkedVal,
+    };
+
+    const url = 'http://localhost:8080/AnalyzeText';
+    console.log(this.httpOptions);
+    return this.http.post(url, requestBody, this.httpOptions) /*.pipe(
+      map((response: any) => {
+        console.log('Response:', response);
+        return response;
+      }),
+      catchError((error) => {
+        console.error('Error:', error);
+        throw error;
+      })
+    )*/;
+  }
+
   onSubmit = () => {
-    this.results.push(this.analyzeText([this.checkedVal, this.taValue]));
+    if (!this.isSwitchOn) {
+      this.results.push(this.analyzeText([this.checkedVal, this.taValue]));
+    } else {
+      this.postData().subscribe((response: any) => {
+        this.results.push(response.data);
+      });
+    }
     this.resultsChange.emit(this.results);
     console.log(this.results);
   };
